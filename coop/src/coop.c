@@ -8,12 +8,12 @@ int main(void){
         choice = getchar(); // to store players move.
         if (choice != EOF){ 
             
-            if ((count == 9) && (choice=='d' || choice=='D' || choice=='c' || choice=='C')){    //in every 9 rounds always play 'Cooperate'.
+            if ((count == 9) && (choice=='D' || choice=='C')){    //in every 9 rounds always play 'Cooperate'.
                 putchar('C');
                 putchar('\n');
                 count = 0;     // reset counter
             }
-            else if (choice=='d' || choice=='D' || choice=='c' || choice=='C'){
+            else if (choice=='D' || choice=='C'){
                 putchar(choice);    // next move is players' previous move.
                 putchar('\n');
                 count++;
