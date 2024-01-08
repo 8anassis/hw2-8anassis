@@ -6,23 +6,26 @@ int main(void){
     putchar('\n');
     while (1) {
         choice = getchar(); // to store players move.
-        if (choice != EOF){ 
-            
+        if (choice != EOF){             
             if ((count == 9) && (choice=='D' || choice=='C')){    //in every 9 rounds always play 'Cooperate'.
                 putchar('C');
+                fflush(stdin);
                 putchar('\n');
+                fflush(stdin);
                 count = 0;     // reset counter
             }
             else if (choice=='D' || choice=='C'){
                 putchar(choice);    // next move is players' previous move.
+                fflush(stdin);
                 putchar('\n');
+                fflush(stdin);
                 count++;
             }
-            else
-            continue; // if not the right character ignore and continue.
+            else{
+                fflush(stdin);
+                continue; // if not the right character ignore and continue.
+            }                
         }
-        else
         break;  // if you reach EOF, break the loop.
-    }
-    return 0;
+    }return 0;
 }
