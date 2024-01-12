@@ -1,32 +1,44 @@
 #include <stdio.h>
 
 int main(void){
-    int choice, count=0, rounds=0;                                    // the player's move, a counter (count) for every 10 rounds so that can play cooparate and a counter (rounds) for maximum rounds.
-    putchar('C');                                                     // first move always cooperate.
+    int choice, count=0, rounds=0;                                  
+    putchar('C');                                                   
     putchar('\n');
     
-    while (((choice = getchar()) != EOF) && (rounds<=1E6)) {
-                     
-        if ((count == 9) && (choice=='D' || choice=='C')){             // every 10 rounds always play 'Cooperate'.
+    while (rounds<=1E6){
+        do{
+                choice=getchar();
+                fflush(stdout);
+        }       
+        while (choice != 'C' && choice != 'D' && choice!=EOF);
+
+        if (choice==EOF)
+           break;
+        
+        else if (choice=='C'){
                 putchar('C');
                 fflush(stdout);
                 putchar('\n');
                 fflush(stdout);
-                count = 0;                                             // reset counter
-                rounds++;                                              //increase total rounds
+                rounds++;
         }
-        else if (choice=='D' || choice=='C'){
-                putchar(choice);                                       // next move is players' previous move.
+        else if (choice=='D' && count==9){
+                putchar('C');                                      
+                fflush(stdout);
+                putchar('\n');
+                fflush(stdout);
+                count=0;
+                rounds++;
+        }
+        else if (choice=='D' && count!=9){
+                putchar('D');
                 fflush(stdout);
                 putchar('\n');
                 fflush(stdout);
                 count++;
                 rounds++;
         }
-        else{
-                fflush(stdin);
-                continue;                                             // if not the right character ignore and continue.
+        
         }                
-    }
-    return 0;
+        return 0;
 }
