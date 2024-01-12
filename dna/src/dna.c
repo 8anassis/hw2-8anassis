@@ -1,17 +1,36 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-int main(void){
+int main(int argc, char *argv[]){
+    if (argc!=3){
+        printf("the program needs to be called as './prog filename1 filename2'\n");
+        return 1;
+    }
+    FILE *fp1, *fp2;
+    int i,j,l,k=0, mx=0, len1, len2;
+    char *a, file1[20], file2[20];
 
-    char *p, *s, *a;
-    int i,j,l,k=0, mx=0;
-    p = "CTATAGATATAGGGC";
-    s = "CATTAGATATAGACG";
+    fp1=fopen(argv[1], "r");
+    if (fp1==NULL){
+        puts("open file1 failed");
+        exit(2);
+    }
+    fp2=fopen(argv[2], "r");
+    if (fp2==NULL){
+        puts("open file2 failed");
+        exit(2);
+    }    
+    fgets(file1,20,fp1);
+    fgets(file2,20,fp2);
 
-    for (i=0; i<strlen(p); i++){
-        for (j=0; j<strlen(s); j++){
+    len1=strlen(file1);
+    len2=strlen(file2);
+
+    for (i=0; i<len1; i++){
+        for (j=0; j<len2; j++){
             
-            while (p[i+k]==s[j+k]){
+            while (file1[i+k]==file2[j+k]){
                                                                
                 k++;                
             }
@@ -19,7 +38,7 @@ int main(void){
             if(k>mx){
                 mx=k;
                 k=0;
-                a=&p[i];
+                a=&file1[i];
             }
             k=0;
         }
