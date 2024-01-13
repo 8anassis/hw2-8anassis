@@ -10,12 +10,10 @@ int main(void){
                 choice=getchar();
                 fflush(stdout);
         }       
-        while (choice != 'C' && choice != 'D' && choice!=EOF);
+        while (choice != 'C' && choice != 'D');
 
-        if (choice==EOF)
-           break;
         
-        else if (choice=='C'){
+        if      (choice=='C'){
                 putchar('C');
                 fflush(stdout);
                 putchar('\n');
