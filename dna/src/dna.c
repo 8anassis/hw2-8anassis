@@ -23,7 +23,7 @@ char *readfile(char* filename){
         puts("insufficient memory");
     }
 
-    fread(b,1,size,fp); 
+    (void)fread(b,1,size,fp); 
     return b;
 }
 
