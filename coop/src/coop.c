@@ -20,7 +20,7 @@ int main(void){
                 fflush(stdout);
                 rounds++;
         }
-        else if (choice=='D' && count==9){
+        if      (choice=='D' && count==9){
                 putchar('C');                                      
                 fflush(stdout);
                 putchar('\n');
@@ -28,7 +28,7 @@ int main(void){
                 count=0;
                 rounds++;
         }
-        else if (choice=='D' && count!=9){
+        if      (choice=='D' && count!=9){
                 putchar('D');
                 fflush(stdout);
                 putchar('\n');
