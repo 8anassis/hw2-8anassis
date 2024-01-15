@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+/* This program reads 2 files containing of strings, comparing them and searches for the maximum in common sequence of characters. */
 
+//This function reads and copy the file given -as argument- returning a pointer to an array of the copied characters.
 char *readfile(char* filename){
     FILE *fp;                              
     char *b;                 
@@ -23,7 +25,9 @@ char *readfile(char* filename){
         puts("insufficient memory");
     }
 
+    //copying and cheking if something went wrong.
     size_t result = fread(b,1,size,fp); 
+    fclose(fp);
     if (result==0){
         exit(2);
     }
@@ -52,6 +56,8 @@ int main(int argc, char *argv[]){
     len1=strlen(b);                  
     len2=strlen(c);
 
+    /* compare only the valid characters. If are the same, keep checking next one, counting the sequence
+    and keep pointing to the first. */
     for (i=0; i<len1; i++){    
         if (is_invalid_char(b[i])){
             continue;
@@ -64,7 +70,8 @@ int main(int argc, char *argv[]){
                                                                
                 k++;                       
             }
-            
+
+            //check if this is the maximum sequence
             if(k>mx){                      
                 mx=k;
                 k=0;
@@ -76,5 +83,6 @@ int main(int argc, char *argv[]){
     for (l=0; l<mx; l++){
         putchar(a[l]);                             
     }
+    putchar('\n');
     return 0;
 }   
