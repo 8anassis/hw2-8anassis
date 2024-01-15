@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 int main(void){
-    int choice, count=0, rounds=0;                                  
+    int choice, count=0, rounds;                                  
     putchar('C');                                                   
     putchar('\n');
     
-    while (rounds<=1E6){
+    for (rounds=0; rounds<=1E6; rounds++){
         do{
                 choice=getchar();
                 fflush(stdout);
@@ -18,23 +18,22 @@ int main(void){
                 fflush(stdout);
                 putchar('\n');
                 fflush(stdout);
-                rounds++;
         }
+
         if      (choice=='D' && count==9){
                 putchar('C');                                      
                 fflush(stdout);
                 putchar('\n');
                 fflush(stdout);
                 count=0;
-                rounds++;
         }
+
         if      (choice=='D' && count!=9){
                 putchar('D');
                 fflush(stdout);
                 putchar('\n');
                 fflush(stdout);
                 count++;
-                rounds++;
         }
         
         }                
