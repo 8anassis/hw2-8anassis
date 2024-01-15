@@ -1,41 +1,53 @@
 #include <stdio.h>
 
 int main(void){
-    int choice, count=0, rounds;                                  
-    putchar('C');                                                   
+    int choice, cntD=0, cntC=0, rounds=0;                                  
+    putchar('C');
+    fflush(stdout);                                                   
     putchar('\n');
-    
-    for (rounds=0; rounds<=1E6; rounds++){
-        do{
-                choice=getchar();
-                fflush(stdout);
-        }       
-        while (choice != 'C' && choice != 'D');
-
+    fflush(stdout);
         
-        if      (choice=='C'){
+    do{
+        choice=getchar();
+        fflush(stdin);              
+        
+        if      (choice=='C' && cntC!=100){
                 putchar('C');
                 fflush(stdout);
                 putchar('\n');
-                fflush(stdout);
+                fflush(stdout);                        
+                cntC++;
+                rounds++;
         }
 
-        if      (choice=='D' && count==9){
-                putchar('C');                                      
-                fflush(stdout);
-                putchar('\n');
-                fflush(stdout);
-                count=0;
-        }
-
-        if      (choice=='D' && count!=9){
+        if      (choice=='C' && cntC==100){
                 putchar('D');
                 fflush(stdout);
                 putchar('\n');
                 fflush(stdout);
-                count++;
+                cntC=0;
+                rounds++;
         }
+
+        if      (choice=='D' && cntD==9){
+                putchar('C');
+                fflush(stdout);                                      
+                putchar('\n');
+                fflush(stdout);
+                cntD=0;
+                rounds++;
+        }
+
+        if      (choice=='D' && cntD!=9){
+                putchar('D');
+                fflush(stdout);
+                putchar('\n');
+                fflush(stdout);                        
+                cntD++;
+                rounds++;
+        }
+        }
+        while (rounds!=1E6);
         
-        }                
         return 0;
 }
